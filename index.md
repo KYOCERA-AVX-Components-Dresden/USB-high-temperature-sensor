@@ -13,7 +13,7 @@ The sensor is using a virtual serial port or virtual comport (VCP). The driver f
 
 ## Commands
 
-The control commands for the sensor are simple. The sensor has just two commands. Please find more details in the table below. Every command must be finisch by an carriage return ("\r"). If you don´t send this sign, the sensor will not respond. The sensor will finishing his response also with an CRC and a carriage return ("\r"). <br> <br> (**Note**: The CRC calculation is descripted in the next section.)
+The control commands for the sensor are simple. The sensor has just two commands. Please find more details in the table below. Every command must be finisch by an carriage return ("\r"). If you don´t send this sign, the sensor will not respond. The sensor will finishing his response also with a carriage return ("\r"). <br> <br> (**Note**: The CRC calculation is descripted in the next section.)
 
 <table border="2" bordercolor="#ff0000">
     <thead>
