@@ -120,13 +120,12 @@ Please find below a C# code example for the serial port setup.
 **Note:** The name of the port depends on your system. Please double check your device manager for real portname because If you connect an other USB device the comport name could be changed.
 
 ```csharp
-//hint: serial port configuration based on sensor manual
 _SerialPort = new System.IO.Ports.SerialPort();
-_SerialPort.PortName = "COM1"; //hint: COM1 is just an examble
-_SerialPort.BaudRate = 9600; //Baud rate define by manual, do not change
+_SerialPort.PortName = "COM1"; //hint: "COM1" is just an examble
+_SerialPort.BaudRate = 9600; //Baud rate is defined by the sensor, do not change
 _SerialPort.DataBits = 8;
 _SerialPort.StopBits = System.IO.Ports.StopBits.One;
-_SerialPort.NewLine = "\r"; //hint: \r defined by manual
+_SerialPort.NewLine = "\r"; //Baud rate is defined by the sensor, do not change
 _SerialPort.ReadTimeout = 500;
 ```
 
@@ -156,5 +155,5 @@ _SerialPort.ReadTimeout = 500;
   - Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.
   - Check the baudrate of the serial port. The required baudrate is 9600 kbits.
 
-- **I just get a crypitc response of the sensor**
+- **I just get a crypitc response from the sensor**
   - Check the Baudrate of the serial port. The required baudrate is 9600 kbits.
