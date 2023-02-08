@@ -25,14 +25,14 @@ The control commands for the sensor are simple. The sensor has just two commands
     </thead>
     <tbody>
         <tr>
-            <td align="center">T?</td>
+            <td align="center" valign="center">T?</td>
             <td align="left">Request of the current temperature of the sensor tip. The unit of the response is Celsius (°C) and won´t be transmitted.</td>
-            <td align="left">+545.4:2BCR (CR means carrige return)</td>
+            <td align="left" valign="center">+545.4:2BCR (CR means carrige return)</td>
         </tr>
         <tr>
-            <td align="center">I?</td>
+            <td align="center" valign="center">I?</td>
             <td align="left">Request of the sensor information string. This response containing a lot of detailed static informations about the sensor e.g. Firmware version, output range. The response string is very long and needs some time to be transmitted from the sensor to the computer.</td>
-            <td align="left">“Type:USB high temperature sensorLFOutput unit:CLF...CR<br><br>(<b>Note:</b> CR means carrige return, LF means line feed) </td>
+            <td align="left" valign="center">“Type:USB high temperature sensorLFOutput unit:CLF...CR<br><br>(<b>Note:</b> CR means carrige return, LF means line feed) </td>
         </tr>
     </tbody>
 </table>
