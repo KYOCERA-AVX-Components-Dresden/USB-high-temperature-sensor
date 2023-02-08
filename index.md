@@ -5,11 +5,7 @@ Our well known thermo couple high temperature sensor has been given an USB Inter
 ## Data logger demo app in C#
 
 We created an easy use data logger in C# to provide an easy and fast implementation of USB high temperature sensor in your target application.
-<br><br>You can find the Git Hub Repository here ➞ [Git Hub Repository](https://borisbloxsberg73.github.io/TestRep/)
-
-### Release of the demo app
-
-Here could you find the lastet release of the data logger app ➞ [FTDI driver download page](https://borisbloxsberg73.github.io/TestRep/)
+<br><br>You can find the Git Hub Repository here ➞ [Git Hub Repository](https://github.com/BorisBloxsberg73/USB-high-temperature-sensor/tree/main)
 
 ## Driver
 
