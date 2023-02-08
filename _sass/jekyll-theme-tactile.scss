@@ -221,7 +221,7 @@ em {
 
 table {
   width: 100%;
-  border: 2px solid #ff0000;
+  border: 2px solid #303030;
 }
 
 th {
@@ -230,8 +230,9 @@ th {
 
 td {
   font-weight: 300;
-  text-align: center;
-  border: 1px solid #ff0000;
+  text-align: left;
+  border: 1px solid #303030;
+vertical-align: middle;
 }
 
 form {
