@@ -1,0 +1,172 @@
+﻿<Window x:Class="USB_data_logger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:USB_data_logger"
+        mc:Ignorable="d"
+        Title="USB data logger" 
+        Height="450" 
+        Width="800"
+        WindowStyle ="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Border 
+        CornerRadius="52" 
+        BorderThickness="10">
+        <Border 
+            CornerRadius="35" 
+            BorderThickness="10" >
+            <Border.BorderBrush>
+                <LinearGradientBrush 
+                    StartPoint="0,0" 
+                    EndPoint="1,1">
+                    <GradientStop 
+                        Color="White" 
+                        Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Grid MouseMove="Grid_MouseMove">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop  Color= "White" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <Image 
+                    Name="ImgKyocera"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Grid.Row="1"  
+                    Grid.RowSpan="2"
+                    Source="Logo/Logo.png" 
+                    Grid.Column="1" 
+                    Margin="15,0,15,0"
+                />
+                <Label 
+                    Content="USB data logger" 
+                    FontSize="35" 
+                    Grid.Column="2" 
+                    Grid.Row="1" 
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="4"
+                    VerticalContentAlignment="Center"
+                    FontFamily="Fonts/#Dosis"/>
+                <Label 
+                    Name="LblVersion"
+                    Content="0.0.0.0" 
+                    Grid.Column="4" 
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1" 
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Right"
+                    FontSize="10"/>
+                <Button
+                    Name="BtnInit"
+                    Content="Initialize application and sensor"
+                    Grid.Column="4" 
+                    Grid.Row="3" 
+                    Grid.ColumnSpan="3"
+                    FontWeight="Bold"
+                    FontSize="20"
+                    Click="BtnInit_Click"/>
+                <Button
+                    Name="BtnClose"
+                    Content="X"
+                     Grid.Column="6" 
+                    Grid.Row="0" 
+                    FontWeight="Bold" 
+                    HorizontalAlignment="Left"
+                    Width="20" 
+                    Click="BtnClose_Click"/>
+                <Label
+                    Name="LblComport"
+                    Content="Comport:"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    VerticalContentAlignment="Center"
+                    FontSize="15"/>
+                <ComboBox
+                    Name="CboComport"
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    FontSize="15"
+                    VerticalContentAlignment="Center" PreviewMouseDown="CboComport_PreviewMouseDown"/>
+                <Label
+                    Name="LblSensorOutput"
+                    Content="Sensor output:"
+                    Grid.Column="1"
+                    Grid.Row="5"
+                    VerticalContentAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"/>
+                <Label
+                    Name="LblSensorInformation"
+                    Content="General sensor information:"
+                    Grid.Column="1"
+                    Grid.Row="6"
+                    VerticalContentAlignment="Top"
+                    FontSize="12"/>
+                <Label
+                    Name="LblSensorInformationData"
+                    Content=".."
+                    Grid.Column="2"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="6"
+                    VerticalContentAlignment="Top"
+                    FontSize="12"/>
+                <Label
+                    Name="LblOsInformation"
+                    Content="General app information:"
+                    Grid.Column="1"
+                    Grid.Row="7"
+                    VerticalContentAlignment="Top"
+                    FontSize="12"/>
+                <Label
+                    Name="LblOsInformationData"
+                    Content=".."
+                    Grid.Column="2"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="7"
+                    VerticalContentAlignment="Top"
+                    FontSize="12"/>
+                <Label
+                    Name="LblSensorOutputCurrentValue"
+                    Content=".."
+                    Grid.Column="2"
+                    Grid.Row="5"
+                    VerticalContentAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"/>
+                <Label
+                    Name="LblSensorOutputTimeStamp"
+                    Content="..."
+                    Grid.Column="4"
+                    Grid.Row="5"
+                    VerticalContentAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"/>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
