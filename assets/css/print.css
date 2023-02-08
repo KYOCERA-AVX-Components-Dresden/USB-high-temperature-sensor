@@ -107,7 +107,7 @@ ul, ol, dl {
 
 /* COMMON STYLES */
 
-table {
+/*table {
   width: 100%;
   border: 1px solid #ebebeb;
 }
@@ -120,7 +120,7 @@ td {
   font-weight: 300;
   text-align: center;
   border: 1px solid #ebebeb;
-}
+}*/
 
 form {
   padding: 20px;
@@ -146,7 +146,7 @@ h3 {
   margin-bottom: 8px;
   font-size: 18px;
   font-weight: bold;
-  color: #d5000d;
+  color: #303030;
 }
 
 h4 {
