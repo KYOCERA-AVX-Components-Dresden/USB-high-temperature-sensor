@@ -150,7 +150,7 @@ _SerialPort.ReadTimeout = 500;
   - Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again
   - Check your device manager after unkown devices
 
-- **I donot get a response for the sensor.**
+- **I do not get a response from the sensor.**
   - Please check your command. 
   - Please only use capital letters for the command string and donn´t insert space in the command.
   - Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.
