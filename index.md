@@ -2,7 +2,6 @@
 layout: default
 title:
 ---
-
 # USB high temperature sensor
 
 Our well known thermo couple high temperature sensor has been given an USB Interface. This new high temperature sensor has a temperature measurement range from -40°C up to 1200°C and a resolution of 0.1K. The communication and power supply of the whole sensor is provided completely by an USB Mini cable. The sensor is designed for general industry applications, test laboratories or smart home applications. The implementation of the sensor in the final application takes place by a virtual serial port and simple control commands.
@@ -16,7 +15,7 @@ We created an easy use data logger in C# to provide an easy and fast implementat
 
 The sensor is using a virtual serial port or virtual comport (VCP). The driver of the virtual comport will be depolyed by the windows update service. If you are using another OS or your computer has no access to the internet, you can downlod the driver also directly from the FTDI website ➞ [FTDI driver download page](https://ftdichip.com/drivers/vcp-drivers/)
 
-## Commands
+## Control commands
 
 The control commands for the sensor are simple. The sensor has only two commands. Please find more details in the table below. Each command must end with an carriage return ("\r"). If you don´t send this sign, the sensor will not responding. The sensor also ends its response with a carriage return ("\r"). <br><br> (**Note**: The CRC calculation is descripted in the next section.)
 
@@ -132,34 +131,41 @@ _SerialPort.NewLine = "\r"; //Note: the end sign is defined by the sensor, do no
 _SerialPort.ReadTimeout = 500;
 ```
 
-## FAQ and trouble shotting
+## FAQ and trouble shooting
 
 - **What type of USB protocol does the sensor use?**
   - The sensor uses USB 2.0.
+
 - **What type of USB connector does the sensor use?**
-  - The sensor uses an USB Mini connector.
+    - The sensor uses an USB Mini connector.
+
 - **Does the sensor require an external power supply?**
-  - No, the sensor is bus powered.
+    - No, the sensor is bus powered.
+
 - **Is it possible to connect more than one sensor to my computer?**
-  - Yes, it is. You can connect more than one sensor to a computer. Every sensor uses an own serial port.
+    - Yes, it is. You can connect more than one sensor to a computer. Every sensor uses an own serial port.
+
 - **Is there another app to communicate with the sensor?**
-  - Yes, you could use every terminal program for the serial port e.g. HTerm or the Hyperterminal.
+    - Yes, you could use every terminal program for the serial port e.g. HTerm or the HyperTerminal.
+    - You could also code your own app.
   
 - **The data logger app shows no comports.**
-  - Please check the USB connection between the sensor and computer.
-  - Change the USB port.
-  - Use the USB ports at the backside of the computer.
-  - Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again.
-  - Check your device manager after unkown devices.
+    - Please check the USB connection between the sensor and computer.
+    - Change the USB port.
+    - Use the USB ports at the backside of the computer.
+    - Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again.
+    - Check your device manager after unkown devices.
 
 - **The sensor does not respond after the descripted commands.**
-  - Please check your command. 
-  - Please only use capital letters for the command string and donn´t insert space in the command.
-  - Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.
-  - Check the baudrate of the serial port. The required baudrate is 9600 kbits.
+    - Please check your command. 
+    - Please only use capital letters for the command string and donn´t insert space in the command.
+    - Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.
+    - Check the baud rate of the serial port. The required baud rate is 9600 kbits.
 
 - **The sensor transmitts only cryptic signs.**
-  - Check the Baudrate of the serial port. The required baudrate is 9600 kbits.
+    - Check the Baudrate of the serial port. The required baud rate is 9600 kbits.
 
 - **The sensor transmitts only temperatures above 1200°C.**
-  - The sensor is maybe damaged and transmitting an diagnosis code.
+    - The sensor is maybe damaged and transmitting an diagnosis code.
+
+
