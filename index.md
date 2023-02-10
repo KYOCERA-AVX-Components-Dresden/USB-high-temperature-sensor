@@ -47,20 +47,20 @@ The sensor response contains always an check sum. This check sum is used to prev
 #### CRC calculation algorithm
 The CRC calculation algorithm sum up only the decimal values of the ASCII signs in front of the double point and adds this to the payload. It will be separated by a double point from the payload. 
 
-In the following example the sensor transmitts a temperature of +545.4°C and the check sum 0x2B.
+In the following example the sensor transmitts a temperature of <span style="background-color:#b8f095">+545.4</span>°C and the check sum 0x<span style="background-color:#f0f095">2B</span>.
 <table border="2" bordercolor="#ff0000">
     <thead>
         <tr>
             <th>Reponse from the sensor after T? command</th>
-            <th width="7%">+</th>
-            <th width="7%">5</th>
-            <th width="7%">4</th>
-            <th width="7%">5</th>
-            <th width="7%">.</th>
-            <th width="7%">4</th>
-            <th width="7%">:</th>
-            <th width="7%">2</th>
-            <th width="7%">B</th>
+            <th width="7%" bgcolor= "#b8f095">+</th>
+            <th width="7%" bgcolor= "#b8f095">5</th>
+            <th width="7%" bgcolor= "#b8f095">4</th>
+            <th width="7%" bgcolor= "#b8f095">5</th>
+            <th width="7%" bgcolor= "#b8f095">.</th>
+            <th width="7%" bgcolor= "#b8f095">4</th>
+            <th width="7%" bgcolor= "#f0f095">:</th>
+            <th width="7%" bgcolor= "#f0f095">2</th>
+            <th width="7%" bgcolor= "#f0f095">B</th>
         </tr>
     </thead>
     <tbody>
@@ -119,53 +119,54 @@ public bool CalcCrc(string rawData, ref byte crc)
 ## Serial port setup
 
 Please find below a C# code example for the serial port setup. 
-**Note:** The name of the port depends on your system. Please double check your device manager for real portname because If you connect an other USB device the comport name could be changed.
+<br>**Note:** The name of the port depends on your system. Please double check your device manager for real portname because If you connect an other USB device the comport name could be changed.
 
 ```csharp
 _SerialPort = new System.IO.Ports.SerialPort();
-_SerialPort.PortName = "COM1"; //Note: "COM1" is just an examble
-_SerialPort.BaudRate = 9600; //Note: Baud rate is defined by the sensor, do not change
+_SerialPort.PortName = "COM1";  //Note: "COM1" is just an examble.
+_SerialPort.BaudRate = 9600;    //Note: Baud rate is defined by the sensor, do not change!
 _SerialPort.DataBits = 8;
 _SerialPort.StopBits = System.IO.Ports.StopBits.One;
-_SerialPort.NewLine = "\r"; //Note: the end sign is defined by the sensor, do not change 
+_SerialPort.NewLine = "\r";     //Note: the end sign is defined by the sensor, do not change!
 _SerialPort.ReadTimeout = 500;
 ```
 
 ## FAQ and trouble shooting
 
-- **What type of USB protocol does the sensor use?**
-  - The sensor uses USB 2.0.
+- **What type of USB protocol does the sensor use?**<br>
+    -- The sensor uses USB 2.0.
 
-- **What type of USB connector does the sensor use?**
-    - The sensor uses an USB Mini connector.
+- **What type of USB connector does the sensor use?**<br>
+    -- The sensor uses an USB Mini connector.
 
-- **Does the sensor require an external power supply?**
-    - No, the sensor is bus powered.
+- **Does the sensor require an external power supply?**<br>
+    -- No, the sensor is bus powered.
 
-- **Is it possible to connect more than one sensor to my computer?**
-    - Yes, it is. You can connect more than one sensor to a computer. Every sensor uses an own serial port.
+- **Is it possible to connect more than one sensor to my computer?**<br>
+    -- Yes, it is. You can connect more than one sensor to a computer. Every sensor uses an own serial port.
 
-- **Is there another app to communicate with the sensor?**
-    - Yes, you could use every terminal program for the serial port e.g. HTerm or the HyperTerminal.
-    - You could also code your own app.
+- **Is there another app to communicate with the sensor?**<br>
+    -- Yes, you could use every terminal program for the serial port e.g. HTerm or the HyperTerminal.<br>
+    -- You could also code your own app.
   
-- **The data logger app shows no comports.**
-    - Please check the USB connection between the sensor and computer.
-    - Change the USB port.
-    - Use the USB ports at the backside of the computer.
-    - Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again.
-    - Check your device manager after unkown devices.
+- **The data logger app shows no comports.**<br>
+    -- Please check the USB connection between the sensor and computer.<br>
+    -- Change the USB port.<br>
+    -- Use the USB ports at the backside of the computer.<br>
+    -- Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again.<br>
+    -- Check your device manager after unkown devices.<br>
 
-- **The sensor does not respond after the descripted commands.**
-    - Please check your command. 
-    - Please only use capital letters for the command string and donn´t insert space in the command.
-    - Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.
-    - Check the baud rate of the serial port. The required baud rate is 9600 kbits.
+- **The sensor does not respond after the descripted commands.**<br>
+    -- Please check your command.<br>
+    -- Please only use capital letters for the command string and donn´t insert space in the command.<br>
+    -- Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.<br>
+    -- Check the baud rate of the serial port. The required baud rate is 9600 kbits.
 
-- **The sensor transmitts only cryptic signs.**
-    - Check the Baudrate of the serial port. The required baud rate is 9600 kbits.
+- **The sensor transmitts only cryptic signs.**<br>
+    -- Check the Baudrate of the serial port. The required baud rate is 9600 kbits.
 
-- **The sensor transmitts only temperatures above 1200°C.**
-    - The sensor is maybe damaged and transmitting an diagnosis code.
+- **The sensor permanently transmitts only temperatures above 1200°C.**<br>
+    -- The sensor is maybe damaged and transmitting an diagnosis code.
 
-
+- **If you don´t find an answer to your question or issue, please create a new issue on GitHub.**<br>  
+   ➞ [New Issue on GitHub](https://github.com/KYOCERA-AVX-Components-Dresden/USB-high-temperature-sensor/issues)
