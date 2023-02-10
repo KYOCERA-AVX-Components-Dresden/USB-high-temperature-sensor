@@ -30,12 +30,12 @@ The control commands for the sensor are simple. The sensor has only two commands
     <tbody>
         <tr>
             <td align="center" valign="center">T?</td>
-            <td align="left">Request of the current temperature of the sensor tip. The unit of the response is Celsius (°C) and won´t be transmitted.</td>
+            <td align="left">Query of the current temperature of the sensor tip. The response unit is Celsius (°C) and is not transmitted.</td>
             <td align="left" valign="center">+545.4:2B&#10094;CR&#10095; (<b>Note:</b> &#10094;CR&#10095; means carrige return)</td>
         </tr>
         <tr>
             <td align="center" valign="center">I?</td>
-            <td align="left">Request of the sensor information string. This response containing a lot of detailed static informations about the sensor e.g. Firmware version, output range. The response string is very long and needs some time to be transmitted from the sensor to the computer.</td>
+            <td align="left">Query of the sensor information string. This response containing a lot of detailed static informations about the sensor e.g. Firmware version, output range. The response string is very long and needs some time to be transmitted from the sensor to the computer.</td>
             <td align="left" valign="center">Type:USB high temperature sensor&#10094;LF&#10095;Output unit:C&#10094;LF&#10095;...&#10094;CR&#10095;<br><br>(<b>Note:</b> &#10094;CR&#10095; means carrige return, &#10094;LF&#10095; means line feed) </td>
         </tr>
     </tbody>
@@ -77,7 +77,7 @@ In the following example the sensor transmitts a temperature of <span style="bac
         <tr>
             <td>Calculation algorithm</td>
             <td colspan=9>Sum up of the decimal values: 43+53+52+53+46+52 = 44 -> 0x2B
-           <br> <b>Note:</b> after 43+53+52+53+46+52 the 8 - bit var does overflow. So the Result turns to 44 and not to 299.</td>
+           <br> <b>Note:</b> After 43+53+52+53+46+52 the 8 - bit var overflows. So the result is 44 and not 299.</td>
         </tr>
     </tbody>
 </table>
@@ -108,7 +108,6 @@ public bool CalcCrc(string rawData, ref byte crc)
         {
             crc += (byte)charArray[i];
         }
-
         rslt = true;
     }
 
@@ -119,7 +118,7 @@ public bool CalcCrc(string rawData, ref byte crc)
 ## Serial port setup
 
 Please find below a C# code example for the serial port setup. 
-<br>**Note:** The name of the port depends on your system. Please double check your device manager for real portname because If you connect an other USB device the comport name could be changed.
+<br>**Note:** The name of the port depends on your system. Please double check your device manager for real portname because if you connect an other USB device the comport name could be changed.
 
 ```csharp
 _SerialPort = new System.IO.Ports.SerialPort();
@@ -131,7 +130,7 @@ _SerialPort.NewLine = "\r";     //Note: the end sign is defined by the sensor, d
 _SerialPort.ReadTimeout = 500;
 ```
 
-## FAQ and trouble shooting
+## FAQ and troubleshooting
 
 - **What type of USB protocol does the sensor use?**<br>
     -- The sensor uses USB 2.0.
@@ -148,6 +147,9 @@ _SerialPort.ReadTimeout = 500;
 - **Is there another app to communicate with the sensor?**<br>
     -- Yes, you could use every terminal program for the serial port e.g. HTerm or the HyperTerminal.<br>
     -- You could also code your own app.
+
+- **What is the sensors highest query interval?**<br>
+    -- The recommended interval is round about twice per second.
   
 - **The data logger app shows no comports.**<br>
     -- Please check the USB connection between the sensor and computer.<br>
