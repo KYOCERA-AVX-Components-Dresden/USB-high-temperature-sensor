@@ -6,6 +6,8 @@ title:
 
 Our well known thermo couple high temperature sensor has been given an USB Interface. This new high temperature sensor has a temperature measurement range from -40°C up to 1200°C and a resolution of 0.1K. The communication and power supply of the whole sensor is provided completely by an USB Mini cable. The sensor is designed for general industry applications, test laboratories or smart home applications. The implementation of the sensor in the final application takes place by a virtual serial port and simple control commands.
 
+If you are interested in this product, please contact our sales team.  ➞ [Dresden.info@kyocera-avx.com](mailto:Dresden.info@kyocera-avx.com)
+
 ## Data logger app in C#
 
 We created an easy use data logger in C# to provide an easy and fast implementation of USB high temperature sensor in your target application.
