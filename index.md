@@ -165,7 +165,7 @@ _SerialPort.ReadTimeout = 500;
     -- Check the baud rate of the serial port. The required baud rate is 9600 kbits.
 
 - **The sensor transmitts only cryptic signs.**<br>
-    -- Check the Baudrate of the serial port. The required baud rate is 9600 kbits.
+    -- Check the baud rate of the serial port. The required baud rate is 9600 kbits.
 
 - **The sensor permanently transmitts only temperatures above 1200°C.**<br>
     -- The sensor is maybe damaged and transmitting an diagnosis code.
