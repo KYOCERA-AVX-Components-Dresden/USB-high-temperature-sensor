@@ -145,7 +145,7 @@ namespace USB_data_logger
                 if (_UsbSensor.GetSensorOutput(ref dataMeasurementSensor))
                 { 
                     outputValue = dataMeasurementSensor.Output.ToString("F1") + " " + _DataInformationSensor.Unit;
-                    date = dataMeasurementSensor.OutputTimeStamp.ToString("MM/dd/yyyy hh:mm:ss.fff");
+                    date = dataMeasurementSensor.OutputTimeStamp.ToString("dd/MM/yyyy hh:mm:ss.fff");
                 }
                 else
                 {

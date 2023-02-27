@@ -1,5 +1,5 @@
 ﻿USB-data-logger
-
+1.0.0.1
 
 winexe
 C#
@@ -16,5 +16,5 @@ C:\AB_Sachsen\GIT\USB-high-temperature-sensor\USB-data-logger\App.xaml
 195-2035196376
 MainWindow.xaml;
 
-True
+False
 

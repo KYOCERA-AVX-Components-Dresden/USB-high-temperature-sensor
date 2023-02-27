@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="stylesheet" type="text/css" href="/assets/css/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico?">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+         <!-- <h1></h1>-->
+          <!--  <h2></h2>-->
+        </header>
+        <section id="downloads" class="clearfix">
+          
+	
+        </section>
+        <hr>
+        <section id="main_content">
+          <h1 id="usb-high-temperature-sensor">USB high temperature sensor</h1>
+
+<p>Our well known thermo couple high temperature sensor has been given an USB Interface. This new high temperature sensor has a temperature measurement range from -40°C up to 1200°C and a resolution of 0.1K. The communication and power supply of the whole sensor is provided completely by an USB Mini cable. The sensor is designed for general industry applications, test laboratories or smart home applications. The implementation of the sensor in the final application takes place by a virtual serial port and simple control commands.</p>
+
+<p>If you are interested in this product, please contact our sales team.  ➞ <a href="mailto:Dresden.info@kyocera-avx.com">Dresden.info@kyocera-avx.com</a></p>
+
+<h2 id="data-logger-app-in-c">Data logger app in C#</h2>
+
+<p>We created an easy use data logger in C# to provide an easy and fast implementation of USB high temperature sensor in your target application.
+<br /><br />You can find the GitHub Repository here ➞ <a href="https://github.com/BorisBloxsberg73/USB-high-temperature-sensor/tree/main">GitHub Repository</a></p>
+
+<h2 id="driver">Driver</h2>
+
+<p>The sensor is using a virtual serial port or virtual comport (VCP). The driver of the virtual comport will be depolyed by the windows update service. If you are using another OS or your computer has no access to the internet, you can downlod the driver also directly from the FTDI website ➞ <a href="https://ftdichip.com/drivers/vcp-drivers/">FTDI driver download page</a></p>
+
+<h2 id="control-commands">Control commands</h2>
+
+<p>The control commands for the sensor are simple. The sensor has only two commands. Please find more details in the table below. Each command must end with an carriage return (“\r”). If you don´t send this sign, the sensor will not responding. The sensor also ends its response with a carriage return (“\r”). <br /><br /> (<strong>Note</strong>: The CRC calculation is descripted in the next section.)</p>
+
+<table border="2" bordercolor="#ff0000">
+    <thead>
+        <tr>
+            <th width="20%">Command</th>
+            <th width="40%">Command description</th>
+            <th width="40%">Examble for response</th>     
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center" valign="center">T?</td>
+            <td align="left">Query of the current temperature of the sensor tip. The response unit is Celsius (°C) and is not transmitted.</td>
+            <td align="left" valign="center">+545.4:2B&#10094;CR&#10095; (<b>Note:</b> &#10094;CR&#10095; means carrige return)</td>
+        </tr>
+        <tr>
+            <td align="center" valign="center">I?</td>
+            <td align="left">Query of the sensor information string. This response containing a lot of detailed static informations about the sensor e.g. Firmware version, output range. The response string is very long and needs some time to be transmitted from the sensor to the computer.</td>
+            <td align="left" valign="center">Type:USB high temperature sensor&#10094;LF&#10095;Output unit:C&#10094;LF&#10095;...&#10094;CR&#10095;<br /><br />(<b>Note:</b> &#10094;CR&#10095; means carrige return, &#10094;LF&#10095; means line feed) </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="crc">CRC</h3>
+<p>The sensor response contains always an check sum. This check sum is used to prevent wrong data transmission or data manipulation. The CRC is separated by a double point from the pay load and is placed at the end of the sensor response. Below you will find further details and a calculation example.</p>
+
+<h4 id="crc-calculation-algorithm">CRC calculation algorithm</h4>
+<p>The CRC calculation algorithm sum up only the decimal values of the ASCII signs in front of the double point and adds this to the payload. It will be separated by a double point from the payload.</p>
+
+<p>In the following example the sensor transmitts a temperature of <span style="background-color:#b8f095">+545.4</span>°C and the check sum 0x<span style="background-color:#f0f095">2B</span>.</p>
+<table border="2" bordercolor="#ff0000">
+    <thead>
+        <tr>
+            <th>Reponse from the sensor after T? command</th>
+            <th width="7%" bgcolor="#b8f095">+</th>
+            <th width="7%" bgcolor="#b8f095">5</th>
+            <th width="7%" bgcolor="#b8f095">4</th>
+            <th width="7%" bgcolor="#b8f095">5</th>
+            <th width="7%" bgcolor="#b8f095">.</th>
+            <th width="7%" bgcolor="#b8f095">4</th>
+            <th width="7%" bgcolor="#f0f095">:</th>
+            <th width="7%" bgcolor="#f0f095">2</th>
+            <th width="7%" bgcolor="#f0f095">B</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Decimal value of the ASCII sign</td>
+            <td align="center">43</td>
+            <td align="center">53</td>
+            <td align="center">52</td>
+            <td align="center">53</td>
+            <td align="center">46</td>
+            <td align="center">52</td>
+            <td colspan="3" align="center"> not relevant for calculation</td>
+        </tr>
+        <tr>
+            <td>Calculation algorithm</td>
+            <td colspan="9">Sum up of the decimal values: 43+53+52+53+46+52 = 44 -&gt; 0x2B
+           <br /> <b>Note:</b> After 43+53+52+53+46+52 the 8 - bit var overflows. So the result is 44 and not 299.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 id="crc-calculation-code-example">CRC calculation code example</h4>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// this method calculates the CRC of the received data</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="c1">/// &lt;param name="rawData"&gt;received  data string from the sensor&lt;/param&gt;</span>
+<span class="c1">/// &lt;param name="crc"&gt;calculated CRC value of the raw data&lt;/param&gt;</span>
+<span class="c1">/// &lt;returns&gt;true -&gt; CRC calculation succeed; false -&gt; CRC calculation failed&lt;/returns&gt;</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">CalcCrc</span><span class="p">(</span><span class="kt">string</span> <span class="n">rawData</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">byte</span> <span class="n">crc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//0 define vars</span>
+    <span class="kt">bool</span> <span class="n">rslt</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="c1">//1 calculate CRC based on string</span>
+    <span class="c1">//check rawData or sensor response regarding double point</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rawData</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">":"</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">//#2 convert string to char array and find index of double point</span>
+        <span class="kt">char</span><span class="p">[]</span> <span class="n">charArray</span> <span class="p">=</span> <span class="n">rawData</span><span class="p">.</span><span class="nf">ToCharArray</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">posLastDoublePoint</span> <span class="p">=</span> <span class="n">rawData</span><span class="p">.</span><span class="nf">LastIndexOf</span><span class="p">(</span><span class="s">":"</span><span class="p">);</span>
+
+        <span class="c1">//#2.1 sum up chars</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">posLastDoublePoint</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">crc</span> <span class="p">+=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="n">charArray</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">rslt</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//#3 return of the result</span>
+    <span class="k">return</span> <span class="n">rslt</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="serial-port-setup">Serial port setup</h2>
+
+<p>Please find below a C# code example for the serial port setup. 
+<br /><strong>Note:</strong> The name of the port depends on your system. Please double check your device manager for real portname because if you connect an other USB device the comport name could be changed.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_SerialPort</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">.</span><span class="nf">SerialPort</span><span class="p">();</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">PortName</span> <span class="p">=</span> <span class="s">"COM1"</span><span class="p">;</span>  <span class="c1">//Note: "COM1" is just an examble.</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">BaudRate</span> <span class="p">=</span> <span class="m">9600</span><span class="p">;</span>    <span class="c1">//Note: Baud rate is defined by the sensor, do not change!</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">DataBits</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">StopBits</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">.</span><span class="n">StopBits</span><span class="p">.</span><span class="n">One</span><span class="p">;</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">NewLine</span> <span class="p">=</span> <span class="s">"\r"</span><span class="p">;</span>     <span class="c1">//Note: the end sign is defined by the sensor, do not change!</span>
+<span class="n">_SerialPort</span><span class="p">.</span><span class="n">ReadTimeout</span> <span class="p">=</span> <span class="m">500</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="faq-and-troubleshooting">FAQ and troubleshooting</h2>
+
+<ul>
+  <li>
+    <p><strong>What type of USB protocol does the sensor use?</strong><br />
+  – The sensor uses USB 2.0.</p>
+  </li>
+  <li>
+    <p><strong>What type of USB connector does the sensor use?</strong><br />
+  – The sensor uses an USB Mini connector.</p>
+  </li>
+  <li>
+    <p><strong>Does the sensor require an external power supply?</strong><br />
+  – No, the sensor is bus powered.</p>
+  </li>
+  <li>
+    <p><strong>Is it possible to connect more than one sensor to my computer?</strong><br />
+  – Yes, it is. You can connect more than one sensor to a computer. Every sensor uses an own serial port.</p>
+  </li>
+  <li>
+    <p><strong>Is there another app to communicate with the sensor?</strong><br />
+  – Yes, you could use every terminal program for the serial port e.g. HTerm or the HyperTerminal.<br />
+  – You could also code your own app.</p>
+  </li>
+  <li>
+    <p><strong>What is the sensors highest query interval?</strong><br />
+  – The recommended interval is round about twice per second.</p>
+  </li>
+  <li>
+    <p><strong>The data logger app shows no comports.</strong><br />
+  – Please check the USB connection between the sensor and computer.<br />
+  – Change the USB port.<br />
+  – Use the USB ports at the backside of the computer.<br />
+  – Disconnect the sensor wait one minute, connect the sensor, wait again one minute and try again.<br />
+  – Check your device manager after unkown devices.<br /></p>
+  </li>
+  <li>
+    <p><strong>The sensor does not respond after the descripted commands.</strong><br />
+  – Please check your command.<br />
+  – Please only use capital letters for the command string and donn´t insert space in the command.<br />
+  – Check your command regarding the carriage return. The senosr needs the carriage return to find the command end.<br />
+  – Check the baud rate of the serial port. The required baud rate is 9600 kbits.</p>
+  </li>
+  <li>
+    <p><strong>The sensor transmitts only cryptic signs.</strong><br />
+  – Check the Baudrate of the serial port. The required baud rate is 9600 kbits.</p>
+  </li>
+  <li>
+    <p><strong>The sensor permanently transmitts only temperatures above 1200°C.</strong><br />
+  – The sensor is maybe damaged and transmitting an diagnosis code.</p>
+  </li>
+  <li>
+    <p><strong>If you don´t find an answer to your question or issue, please create a new issue on GitHub.</strong><br /><br />
+ ➞ <a href="https://github.com/KYOCERA-AVX-Components-Dresden/USB-high-temperature-sensor/issues">New Issue on GitHub</a></p>
+  </li>
+</ul>
+
+        </section>
+
+        <footer>
+        
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.
+        </footer>
+
+      </div>
+    </div>
+  </body>
+</html>
